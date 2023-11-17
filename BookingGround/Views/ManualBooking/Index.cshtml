@@ -1,0 +1,243 @@
+﻿@{
+    ViewBag.Title = "Manual Booking For Ground Manager";
+}
+@model BookingGround.Models.ManualBooking
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar">
+                </span>
+            </button>
+            <div class="nav-collapse collapse">
+                <ul class="nav">
+                    <li class=""><a href="/Home/Index">TRANG CHỦ</a> </li>
+                    <li class="active"><a href="/Booking">ĐẶT SÂN</a> </li>
+                    <li class=""><a href="/Search">SÂN BÓNG ĐÁ</a> </li>
+                    <li class=""><a href="/News">TIN TỨC</a> </li>
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">CÔNG
+                        CỤ<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li class="nav-header">Administrative Tools</li>
+                            <li><a href="/MasterGroundManage">Master Ground Management</a></li>
+                            <li><a href="/Home/Underconstruction">User Management</a></li>
+                            <li class="divider"></li>
+                            <li class="nav-header">Ground Manager's Tools</li>
+                            <li><a href="/GroundManage">Ground Management</a></li>
+                            <li><a href="/ManualBooking">Manual Booking</a></li>
+                            <li class="divider"></li>
+                            <li class="nav-header">User Profile</li>
+                            <li><a href="/Home/Underconstruction">Account Info</a></li>
+                            <li><a href="/Home/Underconstruction">Preferences</a></li>
+                            <li><a href="/Cancel">History / Cancel Booked</a></li>
+                        </ul>
+                    </li>
+                    <li class=""><a href="/Home/Contact">LIÊN HỆ</a> </li>
+                </ul>
+            </div>
+            <a class="brand" href="/Account/LogOff">ĐĂNG XUẤT</a>
+        </div>
+    </div>
+</div>
+<header class="subhead" id="overview">
+    <p><img src="../../Content/img/banner1.jpg"/></p>
+</header>
+
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="span3 bs-docs-sidebar" id="navlist">
+            <ul class="nav nav-list bs-docs-sidenav">
+                <li><a href="/Home/Index">Giới Thiệu Chung</a></li>
+                <li><a href="/Booking">Đặt Sân</a></li>
+                <li class="dropdown-submenu"><a tabindex="-1" href="/Search">Sân Bóng</a>
+                    <ul class="dropdown-menu">
+                        <li style="text-align: center">Danh Sách Quận</li>
+                        <li class="divider"></li>
+                        <li><a tabindex="-1" href="/Search">Quận 1</a></li>
+                        <li><a tabindex="-1" href="/Search">Quận 2</a></li>
+                    </ul>
+                </li>
+                <li><a href="/News">Tin Tức</a></li>
+                <li><a href="/GroundManage">Quản lý sân bóng</a></li>
+                <li><a href="/Home/Underconstruction">Công Cụ</a></li>
+                <li><a href="/Home/Contact">Liên Hệ</a></li>
+            </ul>
+        </div>
+        <!----------------------------------------------------------------------->
+        <div class="span9">
+            <div class="page-header">
+                <h1>
+                    <p style="margin-left: 25%; color: #8E849F;">
+                        Đặt Sân</p>
+                </h1>
+            </div>
+            <form class="form-horizontal" id="ManualBooking" name="ManualBooking" method="post">
+            <div class="row">
+                <div class="control-group">
+                    <label class="control-label span1" for="datepicker">
+                        Đặt ngày</label>
+                    <div class="span2">
+                        <input type="text" id="datepicker" name="datepicker" class="dpDate" value="@Model.Date" />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="control-group">
+                    <label class="control-label span1" for="masterGround">
+                        Cụm sân</label>
+                    <div class="span2">
+                        <select class="btn-inverse" id="masterGround" name="ddlMasterGround" onchange="return formSubmit()">
+                            <option value="null">-----</option>
+                            @if (Model.MasterGrounds != null)
+                            {
+                                foreach (BookingGround.Models.tblMasterGround mast in Model.MasterGrounds)
+                                {
+                                    if (mast.id == Model.SelectMasterGround)
+                                    {
+                                <option value="@mast.id" selected="selected">@mast.name</option>
+                                    }
+                                    else
+                                    {
+                                <option value="c+@mast.id">@mast.name</option>
+                                    }
+                                }
+                            }
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="control-group">
+                    <label class="control-label span1" for="groundType">
+                        Loại sân</label>
+                    <div class="span2">
+                        <select class="btn-inverse" id="groundType" name="ddlGroundType" onchange="return formSubmit()">
+                            <option value="null">-----</option>
+                            @if (Model.GroundTypes != null)
+                            {
+                                foreach (BookingGround.Models.tblGroundType type in Model.GroundTypes)
+                                {
+                                    if (type.id == Model.SelectGroundType)
+                                    {
+                                <option value="@type.id" selected="selected">@type.type</option>
+                                    }
+                                    else
+                                    {
+                                <option value="c+@type.id">@type.type</option>
+                                    }
+                                }
+                            }
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="control-group">
+                    <label class="control-label span1" for="intervalTimes">
+                        Thời gian</label>
+                    <div class="span2">
+                        <select class="btn-inverse" id="intervalTimes" name="ddlInterval" onchange="return formSubmit()">
+                            <option value="null">-----</option>
+                            @if (Model.Intervals != null)
+                            {
+                                foreach (BookingGround.Models.tblInterval interval in Model.Intervals)
+                                {
+                                    if (interval.id == Model.SelectInterval)
+                                    {
+                                <option value="@interval.id" selected="selected">@interval.interval</option>
+                                    }
+                                    else
+                                    {
+                                <option value="c+@interval.id">@interval.interval</option>
+                                    }
+                                }
+                            }
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="control-group">
+                    <label class="control-label span1" for="startAtTime">
+                        Bắt đầu từ</label>
+                    <div class="span2">
+                        <select class="btn-inverse" id="startAtTime" name="ddlTimeTable" onchange="return formSubmit()">
+                            <option value="null">-----</option>
+                            @if (Model.TimesTable != null)
+                            {
+                                foreach (BookingGround.Models.tblTimeTable timetbl in Model.TimesTable)
+                                {
+                                    if (timetbl.id == Model.SelectTimeStartId)
+                                    {
+                                <option value="@timetbl.id" selected="selected">@timetbl.timestart</option>
+                                    }
+                                    else
+                                    {
+                                <option value="c+@timetbl.id">@timetbl.timestart</option>
+                                    }
+                                }
+                            }
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="control-group">
+                    <label class="control-label span1" for="choosingGround">
+                        Chọn sân số</label>
+                    <div class="span2">
+                        <select class="btn-inverse" id="choosingGround" name="ddlChildGround" onchange="return formSubmit()">
+                            <option value="null">-----</option>
+                            @if (Model.ChildGrounds != null)
+                            {
+                                foreach (BookingGround.Models.tblChildGround childtbl in Model.ChildGrounds)
+                                {
+                                    if (childtbl.id == Model.SelectChildGround)
+                                    {
+                                <option value="@childtbl.id" selected="selected">@childtbl.no</option>
+                                    }
+                                    else
+                                    {
+                                <option value="c+@childtbl.id">@childtbl.no</option>
+                                    }
+                                }
+                            }
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="control-group">
+                    <label class="control-label span1" for="cName">
+                        Tên khách hàng</label>
+                    <div class="span2">
+                        <input type="text" id="cName" placeholder="Tên Khách Hàng" name="cName">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label span1" for="cPhone">
+                        Số điện thoại</label>
+                    <div class="span2">
+                        <input type="text" id="cPhone" placeholder="Số điện thoại" name="cPhone">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="span6">
+                    <center>
+                        <input type="submit" class="btn-danger btn-small" id="booking" value="ĐẶT SÂN" /></center>
+                </div>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- -->
+<script language="javascript" type="text/javascript">
+    function formSubmit() {
+        $('#ManualBooking').submit()
+    }
+</script>

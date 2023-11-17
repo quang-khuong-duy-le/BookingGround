@@ -1,0 +1,139 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+@model BookingGround.Models.LoginManage
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar">
+                </span>
+            </button>
+            
+            <div class="nav-collapse collapse">
+                <ul class="nav">
+                    <li class="active"><a href="/Home/Index">TRANG CHỦ</a> </li>
+                    <li class=""><a href="/Booking">ĐẶT SÂN</a> </li>
+                    <li class=""><a href="/Search">SÂN BÓNG ĐÁ</a> </li>
+                    <li class=""><a href="/News">TIN TỨC</a> </li>
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">CÔNG
+                        CỤ<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li class="nav-header">Administrative Tools</li>
+                            <li><a href="/MasterGroundManage">Master Ground Management</a></li>
+                            <li><a href="/Home/Underconstruction">User Management</a></li>
+                            <li class="divider"></li>
+                            <li class="nav-header">Ground Manager's Tools</li>
+                            <li><a href="/GroundManage">Ground Management</a></li>
+                            <li><a href="/ManualBooking">Manual Booking</a></li>
+                            <li class="divider"></li>
+                            <li class="nav-header">User Profile</li>
+                            <li><a href="/Home/Underconstruction">Account Info</a></li>
+                            <li><a href="/Home/Underconstruction">Preferences</a></li>
+                            <li><a href="/Cancel">History / Cancel Booked</a></li>
+                        </ul>
+                    </li>
+                    <li class=""><a href="/Home/Contact">LIÊN HỆ</a> </li>
+                    
+                </ul>
+            </div>
+            @if (Model.isLogin)
+                    {
+                        <a class="brand" href="/Account/LogOff">ĐĂNG XUẤT</a>
+                    }
+                    else
+                    {
+                        <a class="brand" href="/Account/LogOn">ĐĂNG NHẬP</a> 
+
+                        <a class="brand" href="/Account/Register">ĐĂNG KÝ</a>
+                    }
+        </div>
+    </div>
+</div>
+<header class="subhead" id="overview">
+    <p><img src="../../Content/img/banner1.jpg"/></p>
+</header>
+<div class="container">
+    <div class="row">
+        <div class="span3 bs-docs-sidebar" id="navlist">
+            <ul class="nav nav-list bs-docs-sidenav">
+                <li><a href="/Home/Index">Giới Thiệu Chung</a></li>
+                <li><a href="/Booking">Đặt Sân</a></li>
+                <li class="dropdown-submenu"><a tabindex="-1" href="/Search">Sân Bóng</a>
+                    <ul class="dropdown-menu">
+                        <li style="text-align: center">Danh Sách Quận</li>
+                        <li class="divider"></li>
+                        <li><a tabindex="-1" href="/Search">Quận 1</a></li>
+                        <li><a tabindex="-1" href="/Search">Quận 2</a></li>
+                    </ul>
+                </li>
+                <li><a href="/News">Tin Tức</a></li>
+                <li><a href="/GroundManage">Quản lý sân bóng</a></li>
+                <li><a href="/Home/Underconstruction">Công Cụ</a></li>
+                <li><a href="/Home/Contact">Liên Hệ</a></li>
+            </ul>
+        </div>
+        <div class="span9">
+            <fieldset>
+                <iframe width="640" height="360" src="http://www.youtube.com/embed/U567y0lj-Ro?autoplay=1" frameborder="0" allowfullscreen></iframe>
+
+                <br />
+                <br />
+                <h4>
+                    <p style="margin-right: 150px">
+                        Theo nhu cầu đặt sân bóng ngày càng tăng cao.<br />
+                        Chúng thôi phát triển trang web này để giúp các bạn có thể tìm kiếm, đặt sân bóng
+                        một cách hiệu quả nhất.<br />
+                        Chúng tôi liên hệ trực tiếp với chủ sân để xác nhận thông tin sân nên những thông
+                        tin chúng tôi cung cấp là đảm bảo và chất lượng.<br />
+                    </p>
+                </h4>
+                <br />
+                <div id="myCarousel" class="carousel slide" style="width: 640px; height: 360px;">
+                    <div class="carousel-inner">
+                        <div class="item active">
+                            <img src="Content/img/index-1.jpg" alt="">
+                            <div class="carousel-caption">
+                                <h4>
+                                    Dễ dàng tìm kiếm sân bóng</h4>
+                                <p>
+                                    Việc tìm kiếm chưa bao giờ đơn giản đến thế, bạn chỉ cần vài thao tác đơn giản là
+                                    có thể tìm chính xác sân bóng trong tích tắc.</p>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img src="Content/img/index-2.jpg" alt="">
+                            <div class="carousel-caption">
+                                <h4>
+                                    Sân bóng chất lượng</h4>
+                                <p>
+                                    Các bạn có thể yên tâm về chất lượng sân vì chúng tôi có liên hệ chặt chẽ với chủ
+                                    sân</p>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img src="Content/img/index-3.jpg" alt="">
+                            <div class="carousel-caption">
+                                <h4>
+                                    Cung cấp tin tức nhanh chóng</h4>
+                                <p>
+                                    Tin tức sẽ dược cập nhật đến các bạn nhanh nhất có thể.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+                    <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
+                </div>
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <h4>
+                    Hy vọng sẽ nhận được sự hợp tác của các bạn.</h4>
+            </fieldset>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,210 @@
+﻿@model BookingGround.Models.LoginManage
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar">
+                </span>
+            </button>
+            
+            <div class="nav-collapse collapse">
+                <ul class="nav">
+                    <li class="active"><a href="/Home/Index">TRANG CHỦ</a> </li>
+                    <li class=""><a href="/Booking">ĐẶT SÂN</a> </li>
+                    <li class=""><a href="/Search">SÂN BÓNG ĐÁ</a> </li>
+                    <li class=""><a href="/News">TIN TỨC</a> </li>
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">CÔNG
+                        CỤ<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li class="nav-header">Administrative Tools</li>
+                            <li><a href="/MasterGroundManage">Master Ground Management</a></li>
+                            <li><a href="/Home/Underconstruction">User Management</a></li>
+                            <li class="divider"></li>
+                            <li class="nav-header">Ground Manager's Tools</li>
+                            <li><a href="/GroundManage">Ground Management</a></li>
+                            <li><a href="/ManualBooking">Manual Booking</a></li>
+                            <li class="divider"></li>
+                            <li class="nav-header">User Profile</li>
+                            <li><a href="/Home/Underconstruction">Account Info</a></li>
+                            <li><a href="/Home/Underconstruction">Preferences</a></li>
+                            <li><a href="/Cancel">History / Cancel Booked</a></li>
+                        </ul>
+                    </li>
+                    <li class=""><a href="/Home/Contact">LIÊN HỆ</a> </li>
+                    
+                </ul>
+            </div>
+            @if (Model.isLogin)
+                    {
+                        <a class="brand" href="/Account/LogOff">ĐĂNG XUẤT</a>
+                    }
+                    else
+                    {
+                        <a class="brand" href="/Account/LogOn">ĐĂNG NHẬP</a> 
+
+                        <a class="brand" href="/Account/Register">ĐĂNG KÝ</a>
+                    }
+        </div>
+    </div>
+</div>
+<header class="subhead" id="overview">
+    <p><img src="../../Content/img/banner1.jpg"/></p>
+</header>
+<div class="container">
+    <div class="row">
+        <div class="span3 bs-docs-sidebar" id="navlist">
+            <ul class="nav nav-list bs-docs-sidenav">
+                <li><a href="/Home/Index">Giới Thiệu Chung</a></li>
+                <li><a href="/Booking">Đặt Sân</a></li>
+                <li class="dropdown-submenu"><a tabindex="-1" href="/Search">Sân Bóng</a>
+                    <ul class="dropdown-menu">
+                        <li style="text-align: center">Danh Sách Quận</li>
+                        <li class="divider"></li>
+                        <li><a tabindex="-1" href="/Search">Quận 1</a></li>
+                        <li><a tabindex="-1" href="/Search">Quận 2</a></li>
+                    </ul>
+                </li>
+                <li><a href="/News">Tin Tức</a></li>
+                <li><a href="/GroundManage">Quản lý sân bóng</a></li>
+                <li><a href="/Home/Underconstruction">Công Cụ</a></li>
+                <li><a href="/Home/Contact">Liên Hệ</a></li>
+            </ul>
+        </div>
+        <div class="span9">
+            <div class="row">
+                <section id="news">
+            <!-- News -->
+            <div class="span4" style="border:groove">            
+              <h4 style="color:#F00" align="center">TIN TỨC</h4>
+              <div class="media">
+                <a class="pull-left" href="#">
+                  <img class="media-object" src="img/sb-icon.png" width="50">
+                </a>
+                <div class="media-body">
+                  <h4 class="media-heading">Man Utd đạt được thỏa thuận mua Messi</h4>
+			      <p>Ngày hôm qua, 3/6, người đại diện của Messi đã thông báo đạt được thỏa thuận sơ bộ với Man Utd ... </p>
+                 <p> <a href="http://bongdaplus.vn">&gt;&gt;Đọc thêm</a> </p>
+			     
+                </div>
+              </div>
+              <div class="media">
+                <a class="pull-left" href="#">
+                  <img class="media-object" src="img/sb-icon.png" width="50">
+                </a>
+                <div class="media-body">
+                  <h4 class="media-heading">Chelsea có nguy cơ mất Hazard đến cuối mùa</h4>
+   							<p>Chelsea có thể sẽ mất tiền vệ người Bỉ Eden Hazard đến cuối mùa vì chấn thương ... </p>
+                 <p> <a href="http://bongdaplus.vn">&gt;&gt;Đọc thêm</a> </p>
+                </div>
+              </div>
+              <div class="media">
+                <a class="pull-left" href="#">
+                  <img class="media-object" src="img/sb-icon.png" width="50">
+                </a>
+                <div class="media-body">
+                  <h4 class="media-heading">Roberto Mancini sang Trung Quốc</h4>
+   							<p>Sau khi bị Man city sa thải, Mancini có cơ hội được sang Trung Quốc dẫn dắt CLB Thân Hoa Thượng Hải ... </p>
+                 <p> <a href="http://bongdaplus.vn">&gt;&gt;Đọc thêm</a> </p>
+                </div>
+              </div>
+              <div class="media">
+                <a class="pull-left" href="#">
+                  <img class="media-object" src="img/sb-icon.png" width="50">
+                </a>
+                <div class="media-body">
+                  <h4 class="media-heading">Arsenal chính thức có được Ronaldo</h4>
+   							<p>Hôm nay, trang web chính thức của Arsenal đã thông báo họ đã có được chữ ký của tiền đạo Cristiano Ronaldo ... </p>
+                 <p> <a href="http://bongdaplus.vn">&gt;&gt;Đọc thêm</a> </p>
+                </div>
+              </div>
+              <div class="media">
+                <a class="pull-left" href="#">
+                  <img class="media-object" src="img/sb-icon.png" width="50">
+                </a>
+                <div class="media-body">
+                  <h4 class="media-heading">Công Vinh nhận danh hiệu quả bóng vàng Châu Á</h4>
+   							<p>Tiền đạo Lê Công Vinh đã vinh dự nhận danh hiệu Quả bóng vàng Châu Á khi hơn đối thủ xếp sau là S.Kagawa 44 điểm ...</p>
+                 <p> <a href="http://bongdaplus.vn">&gt;&gt;Đọc thêm</a> </p>
+                </div>
+              </div>
+              <div class="media">
+                <a class="pull-left" href="#">
+                  <img class="media-object" src="img/sb-icon.png" width="50">
+                </a>
+                <div class="media-body">
+                  <h4 class="media-heading">Man Utd vô địch Ngoại Hạng Anh lần thứ 20</h4>
+   							 <p>Sau chiến thắng vang dội 6-0 trước Chelsea, Manchester United đã lần thứ 20 trong lịch sử đạt chức vô địch Ngoại hạng Anh ... </p>
+                 <p> <a href="http://bongdaplus.vn">&gt;&gt;Đọc thêm</a> </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Event -->          
+            <div class="span4" style="border:groove">            
+              <h4 style="color:#F00" align="center">SỰ KIỆN</h4>
+              <div class="media">
+                <a class="pull-left" href="#">
+                  <img class="media-object" src="img/whistle-icon.png" width="50">
+                </a>
+                <div class="media-body">
+                  <h4 class="media-heading">ManUtd - Chelsea: 6 - 0 </h4>
+   							 <p>Bàn thắng thứ 42 của Van Persie như phát súng, báo hiệu cho một cuộc tàn sát không khoan nhượng của quỷ đỏ ... </p>
+                 <p> <a href="http://bongdaplus.vn">&gt;&gt;Đọc thêm</a> </p>
+                </div>
+              </div>
+              <div class="media">
+                <a class="pull-left" href="#">
+                  <img class="media-object" src="img/whistle-icon.png" width="50">
+                </a>
+                <div class="media-body">
+                  <h4 class="media-heading">Liverpool - Stoke city: 0 - 2</h4>
+   							 <p>Khởi đầu chậm chạp hơn đối thủ, nhưng Stoke mới là những người có bàn thắng trước khi đội khách được hưởng penalty ... </p>
+                 <p> <a href="http://bongdaplus.vn">&gt;&gt;Đọc thêm</a> </p>
+                </div>
+              </div>
+              <div class="media">
+                <a class="pull-left" href="#">
+                  <img class="media-object" src="img/whistle-icon.png" width="50">
+                </a>
+                <div class="media-body">
+                  <h4 class="media-heading">Arsenal - Reading: 5 - 5</h4>
+   							 <p>Trận đấu điên rồ đã kết thúc với tỉ số 5-5 bằng cái cách mà không ai tưởng tượng nổi, đội chủ nhà đã bị gỡ hòa khi đã dẫn trước 5-0 ... </p>
+                 <p> <a href="http://bongdaplus.vn">&gt;&gt;Đọc thêm</a> </p>
+                </div>
+              </div>
+              <div class="media">
+                <a class="pull-left" href="#">
+                  <img class="media-object" src="img/whistle-icon.png" width="50">
+                </a>
+                <div class="media-body">
+                  <h4 class="media-heading">(Trụ hạng) Man city - Swansea: 0 - 1 </h4>
+   							<p>Mọi thứ dường như sụp đổ trước các cổ động viên Man xanh khi Swansea có bàn thắng ở phút 90+2, qua đó chính thức đưa Man city xuống chơi ở giải Hạng Nhất ...</p>
+                 <p> <a href="http://bongdaplus.vn">&gt;&gt;Đọc thêm</a> </p>
+                </div>
+              </div>
+              <div class="media">
+                <a class="pull-left" href="#">
+                  <img class="media-object" src="img/whistle-icon.png" width="50">
+                </a>
+                <div class="media-body">
+                  <h4 class="media-heading">(Chung kết C1) ManUtd - Barca: 4 - 3 </h4>
+   							 <p>Manutd đã kết thúc một năm 2013 với cú ăn 3 lịch sử sau khi họ đánh bại Barca trong 2 hiệp phụ ... </p>
+                 <p> <a href="http://bongdaplus.vn">&gt;&gt;Đọc thêm</a> </p>
+                </div>
+              </div>
+              <div class="media">
+                <a class="pull-left" href="#">
+                  <img class="media-object" src="img/whistle-icon.png" width="50">
+                </a>
+                <div class="media-body">
+                  <h4 class="media-heading">(Chung kết FA) ManUtd - Liverpool: 2 - 0 </h4>
+   							<p>Chức vô địch cúp FA dành cho Manutd khi họ vượt qua Liverpool trong trận chung kết nghẹt thở... </p>
+                 <p> <a href="http://bongdaplus.vn">&gt;&gt;Đọc thêm</a> </p>
+                </div>
+              </div>
+            </div>
+            </div>
+            </section>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,14 @@
+c:\users\phuongnd\documents\visual studio 2010\Projects\BookingGround\BookingGround\bin\BookingGround.dll
+c:\users\phuongnd\documents\visual studio 2010\Projects\BookingGround\BookingGround\bin\BookingGround.pdb
+c:\users\phuongnd\documents\visual studio 2010\Projects\BookingGround\BookingGround\bin\EntityFramework.dll
+c:\users\phuongnd\documents\visual studio 2010\Projects\BookingGround\BookingGround\bin\EntityFramework.xml
+c:\users\phuongnd\documents\visual studio 2010\Projects\BookingGround\BookingGround\obj\Debug\ResolveAssemblyReference.cache
+c:\users\phuongnd\documents\visual studio 2010\Projects\BookingGround\BookingGround\obj\Debug\BookingGround.dll
+c:\users\phuongnd\documents\visual studio 2010\Projects\BookingGround\BookingGround\obj\Debug\BookingGround.pdb
+C:\Users\Lubu\Dropbox\Visual Studio 2010\Projects\BookingGround\BookingGround\bin\BookingGround.dll
+C:\Users\Lubu\Dropbox\Visual Studio 2010\Projects\BookingGround\BookingGround\bin\BookingGround.pdb
+C:\Users\Lubu\Dropbox\Visual Studio 2010\Projects\BookingGround\BookingGround\bin\EntityFramework.dll
+C:\Users\Lubu\Dropbox\Visual Studio 2010\Projects\BookingGround\BookingGround\bin\EntityFramework.xml
+C:\Users\Lubu\Dropbox\Visual Studio 2010\Projects\BookingGround\BookingGround\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Lubu\Dropbox\Visual Studio 2010\Projects\BookingGround\BookingGround\obj\Debug\BookingGround.dll
+C:\Users\Lubu\Dropbox\Visual Studio 2010\Projects\BookingGround\BookingGround\obj\Debug\BookingGround.pdb

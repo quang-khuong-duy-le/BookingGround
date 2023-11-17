@@ -1,0 +1,169 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+@model BookingGround.Models.Manage
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar">
+                </span>
+            </button>
+            <div class="nav-collapse collapse">
+                <ul class="nav">
+                    <li class=""><a href="/Home/Index">TRANG CHỦ</a> </li>
+                    <li class=""><a href="/Booking">ĐẶT SÂN</a> </li>
+                    <li class=""><a href="/Search">SÂN BÓNG ĐÁ</a> </li>
+                    <li class=""><a href="/News">TIN TỨC</a> </li>
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">CÔNG
+                        CỤ<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li class="nav-header">Administrative Tools</li>
+                            <li><a href="/MasterGroundManage">Master Ground Management</a></li>
+                            <li><a href="/Home/Underconstruction">User Management</a></li>
+                            <li class="divider"></li>
+                            <li class="nav-header">Ground Manager's Tools</li>
+                            <li><a href="/GroundManage">Ground Management</a></li>
+                            <li><a href="/ManualBooking">Manual Booking</a></li>
+                            <li class="divider"></li>
+                            <li class="nav-header">User Profile</li>
+                            <li><a href="/Home/Underconstruction">Account Info</a></li>
+                            <li><a href="/Home/Underconstruction">Preferences</a></li>
+                            <li><a href="/Cancel">History / Cancel Booked</a></li>
+                        </ul>
+                    </li>
+                    <li class=""><a href="/Home/Contact">LIÊN HỆ</a> </li>
+                </ul>
+            </div>
+            <a class="brand" href="/Account/LogOff">ĐĂNG XUẤT</a>
+        </div>
+    </div>
+</div>
+<header class="subhead" id="overview">
+    <p><img src="../../Content/img/banner1.jpg"/></p>
+</header>
+
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="span3 bs-docs-sidebar" id="navlist">
+            <ul class="nav nav-list bs-docs-sidenav">
+                <li><a href="/Home/Index">Giới Thiệu Chung</a></li>
+                <li><a href="/Booking">Đặt Sân</a></li>
+                <li class="dropdown-submenu"><a tabindex="-1" href="/Search">Sân Bóng</a>
+                    <ul class="dropdown-menu">
+                        <li style="text-align: center">Danh Sách Quận</li>
+                        <li class="divider"></li>
+                        <li><a tabindex="-1" href="/Search">Quận 1</a></li>
+                        <li><a tabindex="-1" href="/Search">Quận 2</a></li>
+                    </ul>
+                </li>
+                <li><a href="/News">Tin Tức</a></li>
+                <li><a href="/GroundManage">Quản lý sân bóng</a></li>
+                <li><a href="/Home/Underconstruction">Công Cụ</a></li>
+                <li><a href="/Home/Contact">Liên Hệ</a></li>
+            </ul>
+        </div>
+
+
+        <div class="span9">
+            <div class="page-header">
+                <h1>
+                    <p style="margin-left: 19%; color: #8E849F;">
+                        Danh Sách Sân Con</p>
+                </h1>
+                <a href="/ChildGroundManage/Create">
+                    <input style="margin-left: 30%" type="button" class="btn btn-primary" value="Tạo Sân Con Mới" /></a>
+            </div>
+            <form method="post" name="formGround" id="formGround">
+            <label for="master_ground">
+                Chọn cụm sân</label>
+            @Html.DropDownList("master_ground", new SelectList(Model.masterGround, "name", "name", Model.selectedMasterGround.name), new { onchange = "formSubmit()", @class = "btn-inverse" })
+            <table class="table">
+                <thead>
+                    <tr>
+                        <td>
+                            ID
+                        </td>
+                        <td>
+                            Sân Số
+                        </td>
+                        <td>
+                            Loại Sân
+                        </td>
+                        <td>
+                            Thời Gian Chơi
+                        </td>
+                        <td>
+                            Update
+                        </td>
+                        <td>
+                            Delete
+                        </td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (BookingGround.Models.tblChildGround childGround in Model.childGround)
+                    { 
+                        <tr>
+                            <td>
+                                <p id="id">@childGround.id</p>
+                            </td>
+                            <td>
+                                <p id="no">@childGround.no</p>
+                            </td>
+                            <td>
+                                <p id="type">@childGround.tblGroundType.type</p>
+                            </td>
+                            <td>
+                                <p id="interval">@childGround.tblInterval.interval</p>
+                            </td>
+                            <td>
+                                <a href="/ChildGroundManage/Update/@childGround.id" >
+                                    <input type="button" value="Update"  /></a>
+                            </td>
+                            <td>
+                                    <input type="button" value="Delete" onclick="delete_confirm(@childGround.id.ToString());" />
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            </form>
+        </div>
+    </div>
+</div>
+<br />
+<br />
+<br />
+<br />
+<br />
+<!-- Le javascript
+          ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script type="text/javascript">
+    function formSubmit() {
+        $('#formGround').submit();
+    }
+
+    function delete_confirm(childID){
+        if (confirm("Tất cả danh sách đặt sân của sân con sẽ bị xóa! Bạn có đủ can đảm để thử?")) {
+            alert("Bạn rất can đảm! Đang thực hiện xóa!");
+            var s = "/ChildGroundManage/Delete/" + childID;
+            window.location = s; 
+        }else{
+            alert("What a shame!");
+        }
+    }
+
+
+</script>
+<script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+<script src="js/jquery.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/prettify.js"></script>
+<script src="js/application.js"></script>
+<!-- Analytics
+          ================================================== -->

@@ -1,0 +1,106 @@
+﻿@{
+    ViewBag.Title = "Cancel";
+}
+@model BookingGround.Models.Cancel
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar">
+                </span>
+            </button>
+            <div class="nav-collapse collapse">
+                <ul class="nav">
+                    <li class=""><a href="/Home/Index">TRANG CHỦ</a> </li>
+                    <li class=""><a href="/Booking">ĐẶT SÂN</a> </li>
+                    <li class=""><a href="/Search">SÂN BÓNG ĐÁ</a> </li>
+                    <li class=""><a href="/News">TIN TỨC</a> </li>
+                    <li class="dropdown active"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        CÔNG CỤ<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li class="nav-header">Administrative Tools</li>
+                            <li><a href="/MasterGroundManage">Master Ground Management</a></li>
+                            <li><a href="/Home/Underconstruction">User Management</a></li>
+                            <li class="divider"></li>
+                            <li class="nav-header">Ground Manager's Tools</li>
+                            <li><a href="/GroundManage">Ground Management</a></li>
+                            <li><a href="/ManualBooking">Manual Booking</a></li>
+                            <li class="divider"></li>
+                            <li class="nav-header">User Profile</li>
+                            <li><a href="/Home/Underconstruction">Account Info</a></li>
+                            <li><a href="/Home/Underconstruction">Preferences</a></li>
+                            <li><a href="/Cancel">History / Cancel Booked</a></li>
+                        </ul>
+                    </li>
+                    <li class=""><a href="/Home/Contact">LIÊN HỆ</a> </li>
+                    <li class=""><a href="/Account/LogOff">ĐĂNG XUẤT</a> </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<header class="subhead" id="overview">
+    <p><img src="../../Content/img/banner1.jpg"/></p>
+</header>
+<!-- Docs nav
+  ================================================== -->
+<div class="container">
+    <div class="row">
+        <div class="page-header">
+            <h1>
+                <p style="margin-left: 37%; color: #8E849F;">
+                    Danh Sách Đặt Sân</p>
+            </h1>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <td>
+                        Tên Sân
+                    </td>
+                    <td>
+                        Địa Chỉ
+                    </td>
+                    <td>
+                        Thời Gian Đặt
+                    </td>
+                    <td>
+                        Thời Gian Đá
+                    </td>
+                    <td>
+                        Bắt Đầu Từ
+                    </td>
+                    <td>
+                        Hủy Sân
+                    </td>
+            </thead>
+            <tbody>
+                @foreach (BookingGround.Models.tblBookingList list in Model.bookingList)
+                {
+                    <tr class="success">
+                        <td>
+                            @list.tblGroundTime.tblChildGround.tblMasterGround.name
+                        </td>
+                        <td>
+                            @list.tblGroundTime.tblChildGround.tblMasterGround.address
+                        </td>
+                        <td>
+                            @list.date
+                        </td>
+                        <td>
+                            @list.tblGroundTime.tblChildGround.tblInterval.interval phút
+                        </td>
+                        <td>
+                            @list.tblGroundTime.tblTimeTable.timestart
+                        </td>
+                        <td>
+                            @Html.ActionLink("Hủy đặt sân", "Cancel", new { id = list.id })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <div class="span9">
+        </div>
+    </div>
+</div>

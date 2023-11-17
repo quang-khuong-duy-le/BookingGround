@@ -1,0 +1,329 @@
+﻿@{
+    ViewBag.Title = "BookingGround";
+}
+@model BookingGround.Models.Booking
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar">
+                </span>
+            </button>
+            <div class="nav-collapse collapse">
+                <ul class="nav">
+                    <li class=""><a href="/Home/Index">TRANG CHỦ</a> </li>
+                    <li class=""><a href="/Booking">ĐẶT SÂN</a> </li>
+                    <li class=""><a href="/Search">SÂN BÓNG ĐÁ</a> </li>
+                    <li class=""><a href="/News">TIN TỨC</a> </li>
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">CÔNG
+                        CỤ<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li class="nav-header">Administrative Tools</li>
+                            <li><a href="/MasterGroundManage">Master Ground Management</a></li>
+                            <li><a href="/Home/Underconstruction">User Management</a></li>
+                            <li class="divider"></li>
+                            <li class="nav-header">Ground Manager's Tools</li>
+                            <li><a href="/GroundManage">Ground Management</a></li>
+                            <li><a href="/ManualBooking">Manual Booking</a></li>
+                            <li class="divider"></li>
+                            <li class="nav-header">User Profile</li>
+                            <li><a href="/Home/Underconstruction">Account Info</a></li>
+                            <li><a href="/Home/Underconstruction">Preferences</a></li>
+                            <li><a href="/Cancel">History / Cancel Booked</a></li>
+                        </ul>
+                    </li>
+                    <li class=""><a href="/Home/Contact">LIÊN HỆ</a> </li>
+                    
+                </ul>
+            </div>
+            <a class="brand" href="/Account/LogOff">ĐĂNG XUẤT</a>
+        </div>
+    </div>
+</div>
+<header class="subhead" id="overview">
+    <p><img src="../../Content/img/banner1.jpg"/></p>
+</header>
+
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="span3 bs-docs-sidebar" id="navlist">
+            <ul class="nav nav-list bs-docs-sidenav">
+                <li><a href="/Home/Index">Giới Thiệu Chung</a></li>
+                <li><a href="/Booking">Đặt Sân</a></li>
+                <li class="dropdown-submenu"><a tabindex="-1" href="/Search">Sân Bóng</a>
+                    <ul class="dropdown-menu">
+                        <li style="text-align: center">Danh Sách Quận</li>
+                        <li class="divider"></li>
+                        <li><a tabindex="-1" href="/Search">Quận 1</a></li>
+                        <li><a tabindex="-1" href="/Search">Quận 2</a></li>
+                    </ul>
+                </li>
+                <li><a href="/News">Tin Tức</a></li>
+                <li><a href="/GroundManage">Quản lý sân bóng</a></li>
+                <li><a href="/Home/Underconstruction">Công Cụ</a></li>
+                <li><a href="/Home/Contact">Liên Hệ</a></li>
+            </ul>
+        </div>
+
+
+        <div class="span9">
+            <div class="row">
+                <div class="span6">
+                    <fieldset>
+                        <div class="page-header">
+                            <h1>
+                                <p style="margin-left: 25%; color: #8E849F;">
+                                    Đặt Sân</p>
+                            </h1>
+                        </div>
+                        <form class="form-horizontal" id="BookingForm" method="post">
+                        <div class="row">
+                            <div class="control-group">
+                                <label class="control-label span1" for="ddlDistrict">
+                                    Quận</label>
+                                <div class="span2">
+                                    <select class="btn-inverse" id="ddlDistrict" onchange="return formSubmit()" name="ddlDistrict">
+                                        <option value="null">-----</option>
+                                        @if (Model.District != null)
+                                        {
+                                            foreach (BookingGround.Models.tblDistrict dist in Model.District)
+                                            {
+                                                if (dist.id == Model.SelectDistrictId)
+                                                {
+                                            <option value="@dist.id" selected="selected">@dist.name</option>
+                                                }
+                                                else
+                                                {
+                                            <option value="c+@dist.id">@dist.name</option>
+                                                }
+                                            }
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="control-group">
+                                <label class="control-label span1" for="datepicker">
+                                    Đặt ngày</label>
+                                <div class="span2">
+                                    <input type="text" id="datepicker" name="datepicker" class="dpDate" value= "@Model.Date" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="control-group">
+                                <label class="control-label span1" for="ddlGroundType">
+                                    Loại sân</label>
+                                <div class="span2">
+                                    <select class="btn-inverse" id="ddlGroundType" onchange="return formSubmit()" name="ddlGroundType">
+                                        <option value="null">-----</option>
+                                        @if (Model.GroundType != null)
+                                        {
+                                            foreach (BookingGround.Models.tblGroundType type in Model.GroundType)
+                                            {
+                                                if (type.id == Model.SelectGroundTypeId)
+                                                {
+                                            <option value="@type.id" selected="selected">@type.type</option>
+                                                }
+                                                else
+                                                {
+                                            <option value="c+@type.id">@type.type</option>
+                                                }
+                                            }
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="control-group">
+                                <label class="control-label span1" for="ddlInterval">
+                                    Thời gian</label>
+                                <div class="span2">
+                                    <select class="btn-inverse" id="ddlInterval" onchange="return formSubmit()" name="ddlInterval">
+                                        <option value="null">-----</option>
+                                        @if (Model.Interval != null)
+                                        {
+                                            foreach (BookingGround.Models.tblInterval interval in Model.Interval)
+                                            {
+                                                if (interval.id == Model.SelectInterval)
+                                                {
+                                            <option value="@interval.id" selected="selected">@interval.interval</option>
+                                                }
+                                                else
+                                                {
+                                            <option value="c+@interval.id">@interval.interval</option>
+                                                }
+                                            }
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="control-group">
+                                <label class="control-label span1" for="startAtTime">
+                                    Bắt đầu từ</label>
+                                <div class="span2">
+                                    <select class="btn-inverse" id="ddlTimeTable" onchange="return formSubmit()" name="ddlTimeTable">
+                                        <option value="null">-----</option>
+                                        @if (Model.TimeTable != null)
+                                        {
+                                            foreach (BookingGround.Models.tblTimeTable timetbl in Model.TimeTable)
+                                            {
+                                                if (timetbl.id == Model.SelectTimeStart)
+                                                {
+                                            <option value="@timetbl.id" selected="selected">@timetbl.timestart</option>
+                                                }
+                                                else
+                                                {
+                                            <option value="c+@timetbl.id">@timetbl.timestart</option>
+                                                }
+                                            }
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="control-group">
+                                <label class="control-label span1" for="choosingGround">
+                                    Chọn sân</label>
+                                <div class="span2">
+                                    <select class="btn-inverse" id="ddlMasterGround" onchange="return formSubmit()" name="ddlMasterGround">
+                                        <option value="null">-----</option>
+                                        @if (Model.MasterGround != null)
+                                        {
+                                            foreach (BookingGround.Models.tblMasterGround master in Model.MasterGround)
+                                            {
+                                                if (master.id == Model.SelectMaster)
+                                                {
+                                            <option value="@master.id" selected="selected">@master.name</option>
+                                                }
+                                                else
+                                                {
+                                            <option value="c+@master.id">@master.name</option>
+                                                }
+                                            }
+                                        }
+                                    </select>
+                                    @if (Model.price != 0)
+                                    {
+                                        <input type="text" id="price" name="price" readonly="readonly" value="Giá: @Model.price VNĐ"/>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        @if (Model.MasterGround != null)
+                        {
+                            foreach (BookingGround.Models.tblMasterGround master in Model.MasterGround)
+                            {
+                                if (master.id == Model.SelectMaster)
+                                {
+                            <div class="row">
+                                <center>
+                                    <div class="span6">
+                                        <p>
+                                            <a href="#myModal" role="button" class="btn" data-toggle="modal" onclick="loadXMLDoc()">
+                                                Xem thông tin sân</a></p>
+                                    </div>
+                                    <!-- Modal -->
+                                    <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                                        aria-hidden="true">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                                ×</button>
+                                            <h3 id="myModalLabel">
+                                                Thông tin sân bóng</h3>
+                                        </div>
+                                        <div class="modal-body" id="myModalDiv">
+                                            @master.description
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button class="btn" data-dismiss="modal" aria-hidden="true">
+                                                Close</button>
+                                        </div>
+                                    </div>
+                                </center>
+                            </div>
+                                }
+                            }
+
+                        }
+                        @if (Model.SelectMaster != 0 && Model.SelectInterval != 0 && Model.SelectTimeStart != 0)
+                        {
+                            <center>
+                                <input type="submit" class="btn-danger btn-small" id="booking" value="ĐẶT SÂN" />
+                            </center>
+                        }
+                        </form>
+                    </fieldset>
+                </div>
+            </div>
+            <div class="row" id="Quy Trình">
+                &nbsp &nbsp
+                <div class="span9">
+                    <div class="page-header">
+                        <h1>
+                            <p style="margin-left: 10%; color: #8E849F;">
+                                Quy Trình Đặt Sân</p>
+                        </h1>
+                    </div>
+                    <div class="row">
+                        <p>
+                            Bước 1: Chọn quận muốn đặt sân</p>
+                        <p>
+                            Bước 2: Chọn ngày muốn đặt sân</p>
+                        <p>
+                            Bước 3: Chọn loại sân muốn đặt (Đơn vị: số người/sân)</p>
+                        <p>
+                            Bước 4: Bạn có 2 lựa chọn tiếp theo</p>
+                        <p>
+                            + Chọn thời gian (Muốn đặt trong bao lâu, đơn vị tính: Phút)</p>
+                        <p>
+                            + Chọn sân bạn muốn đặt</p>
+                        <p>
+                            Bước 5: Bạn có 3 lựa chọn tiếp theo</p>
+                        <p>
+                            + Chọn thời gian bạn muốn bắt đầu sử dụng</p>
+                        <p>
+                            + Chọn sân bạn muốn đặt | (Nếu chưa chọn)</p>
+                        <p>
+                            + Chọn thời gian (Muốn đặt trong bao lâu, đơn vị tính: Phút) | (Nếu chưa chọn)</p>
+                        <p>
+                            Bước 6: Chọn thông tin chưa chọn cuối cùng</p>
+                        <p>
+                            Bước 7: Kiểm tra lại thông tin đặt sân, bấm Đặt sân</p>
+                        <p>
+                        </p>
+                        <p>
+                            Lưu ý:</p>
+                        <p>
+                            + Trong quá trình chọn có thể chọn lại thông tin đã chọn</p>
+                        <p>
+                            + Khi chọn lại thông tin đã chọn có thể mất một số thông tin đã chọn khác</p>
+                        <p>
+                            + Tỉ lệ đặt sân thành công là 95%</p>
+                        <p>
+                            + Hệ thống đảm bảo những thông tin bạn đã chọn giúp bạn chọn ra sân hợp lí và còn
+                            trống 100%</p>
+                        <p>
+                            + 5% tỉ lệ đặt sân không thành công là do có người khác đặt sân ngay trước khi bạn
+                            bấm đặt</p>
+                        <p>
+                            Xin cám ơn</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script language="javascript" type="text/javascript">
+    function formSubmit() {
+        $('#BookingForm').submit()
+    }
+</script>

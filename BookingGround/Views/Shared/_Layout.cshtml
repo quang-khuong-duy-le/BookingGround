@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>@ViewBag.Title</title>
+    <!-- Bootstrap -->
+    <link href="@Url.Content("~/Content/bootstrap.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/bootstrap-responsive.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/docs.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/prettify.css")" rel="stylesheet" type="text/css" />
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="http://twitter.github.com/bootstrap/assets/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://twitter.github.com/bootstrap/assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://twitter.github.com/bootstrap/assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://twitter.github.com/bootstrap/assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="http://twitter.github.com/bootstrap/assets/ico/apple-touch-icon-57-precomposed.png">
+    <!----------------------JQuery Ui----------------------------------->
+    <link href="@Url.Content("~/Content/ui-lightness/jquery-ui-1.9.2.custom.css")" rel="stylesheet" type="text/css" />
+    <!-----AJAX----------->
+    <script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.min.js")" type="text/javascript"></script>
+    <!-------------------->
+    <style type="text/css">
+        .footer
+        {
+            padding: 20px 0;
+            margin-top: 150px;
+            border-top: 1px solid #e5e5e5;
+            background-color: #f5f5f5;
+        }
+    </style>
+</head>
+<body data-spy="scroll" data-target=".bs-docs-sidebar" style="background: #F6F6F6">
+    <div class="page">
+        <!------------------
+        <header>
+            <div id="title">
+                <h1>My MVC Application</h1>
+            </div>
+            <div id="logindisplay">
+                @Html.Partial("_LogOnPartial")
+            </div>
+            <nav>
+                <ul id="menu">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                </ul>
+            </nav>
+        </header>
+ ------------->
+        <!--------->
+        <section id="main">
+            @RenderBody()
+        </section>
+        <!------>
+        <footer>
+              <div class="container">
+                <p class="pull-left"><a href="#">Về đầu trang</a></p></br>
+                <p align ="right">Nếu quý vị có bất cứ vấn đề nào muốn gặp trực tiếp chúng tôi, xin liên hệ theo địa chị bên dưới.</p>
+                <p align ="right">Nhóm Se7en</p>
+                <p align ="right">213 To Ky, Quận 12</p>
+                <p align ="right">Thành Phố Hồ Chí Minh</p>
+                <p align ="right">Phone: 01699321321</p>
+                <ul align ="right" class="footer-links">
+                    <li><a href="http://cms-hcm.fpt.edu.vn">Hổ trợ</a></li>
+                </ul>
+              </div>
+        </footer>
+    </div>
+    <script src="@Url.Content("~/Scripts/jquery.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/bootstrap.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/prettify.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/application.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery-ui-1.9.2.custom.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.ui.datepicker.validation.js")" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#datepicker").datepicker({
+                minDate: -0, maxDate: +7, dateFormat: "dd/mm/yy"
+            });
+        });
+    </script>
+</body>
+</html>
